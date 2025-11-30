@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Dokumentacja aplikacji Notatki</title>
+<style>
+body { font-family: Cambria, serif; margin: 2rem; background:#f7f7f7; color:#222; }
+h1, h2 { border-bottom: 1px solid #ccc; padding-bottom: .2rem; }
+code { background:#eee; padding:2px 4px; border-radius:3px; }
+.section { margin-bottom: 1.5rem; }
+</style>
+</head>
+<body>
+<h1>Dokumentacja aplikacji Notatki</h1>
+
+<div class="section">
+<h2>Architektura</h2>
+<p>Aplikacja składa się z programu serwera (Node.js, TCP) oraz klienta desktopowego (Electron + React).
+Serwer przechowuje zaszyfrowane notatki w pliku JSON/XML i udostępnia je strumieniowo w protokole 4P-Frame.
+Klient łączy się z serwerem, odbiera ramki, odszyfrowuje notatki i prezentuje je w GUI.</p>
+</div>
+
+<div class="section">
+<h2>Protokół 4P-Frame</h2>
+<p>Każda ramka ma postać: [LEN_HI][LEN_LO][TYPE][PAYLOAD...], gdzie długość jest zakodowana w Big-Endian,
+TYPE określa typ ramki (0x01 – notatka, 0x02 – komunikat, 0x03 – błąd, 0xFF – koniec strumienia),
+a PAYLOAD zawiera tekstową reprezentację notatki w formacie JSON lub XML.</p>
+</div>
+
+<div class="section">
+<h2>Szyfrowanie</h2>
+<p>Treść notatki (pole <code>body</code>) jest szyfrowana prostym algorytmem opartym o XOR i przesunięcie Cezara.
+Z hasła użytkownika wyliczany jest bajt bazowy, a następnie każdy znak jest mieszany z kluczem zależnym od indeksu.</p>
+</div>
+
+<div class="section">
+<h2>Format notatki</h2>
+<p>Struktura notatki w JSON:</p>
+<pre>{
+  "title": "Tytuł notatki",
+  "created": "RRRR-MM-DD HH:MM:SS",
+  "encrypted": true,
+  "body": "zaszyfrowana treść",
+  "tags": ["tag1", "tag2"],
+  "version": 1
+}</pre>
+</div>
+
+</body>
+</html>

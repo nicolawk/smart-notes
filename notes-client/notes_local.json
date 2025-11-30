@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Lista zakupów",
+    "created": "2025-01-09 14:33:12",
+    "encrypted": false,
+    "body": "Kupi\u0007 mleko, chleb, masBo",
+    "tags": [
+      "zakupy",
+      "dom"
+    ],
+    "version": 1
+  },
+  {
+    "title": "Plan lekcji",
+    "created": "2025-01-08 20:01:55",
+    "encrypted": false,
+    "body": "Matematyka o 8:00, Angielski o 10:00",
+    "tags": [
+      "szkoła",
+      "organizacja"
+    ],
+    "version": 1
+  }
+]

@@ -1,0 +1,29 @@
+// FUNCTION SendFrame(socket, frameType, payloadText)
+
+//     // konwertujemy tekst na bajty UTF-8
+//     payloadBytes ← UTF8_ENCODE(payloadText)
+
+//     // obliczamy długość payloadu
+//     length ← LENGTH(payloadBytes)
+
+//     // rozdzielamy długość na dwa bajty BIG-ENDIAN
+//     lenHi ← FLOOR(length / 256)
+//     lenLo ← length MOD 256
+
+//     // tworzymy pustą listę bajtów
+//     frame ← EMPTY_BYTE_ARRAY()
+
+//     // dodajemy nagłówek 4P
+//     APPEND(frame, lenHi)
+//     APPEND(frame, lenLo)
+//     APPEND(frame, frameType)
+
+//     // dokładamy payload bajt po bajcie
+//     FOR EACH b IN payloadBytes DO
+//         APPEND(frame, b)
+//     END FOR
+
+//     // wysyłamy gotową ramkę do klienta
+//     CALL socket.SEND(frame)
+
+// END FUNCTION
